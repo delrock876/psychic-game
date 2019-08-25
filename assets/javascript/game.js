@@ -1,4 +1,4 @@
-var char = 'abcdefghijklmnopqrstuvwxyz'
+const char = 'abcdefghijklmnopqrstuvwxyz'
 
 const generateLetter = () => {
   let randomLetter = ""
