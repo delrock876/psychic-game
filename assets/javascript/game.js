@@ -1,9 +1,8 @@
 const char = 'abcdefghijklmnopqrstuvwxyz'
 let randomLetter = ""
-let currentGuess = []
-let wins = 1
-let losses = 1
-let guessesLeft = 9
+let wins = 0
+let losses = 0
+let guessesLeft = 8
 
 //generate random letter 
 const generateLetter = () => {
@@ -12,26 +11,32 @@ const generateLetter = () => {
 }
 window.onload = generateLetter()
 
+document.getElementById('win').innerHTML = wins
+document.getElementById('loss').innerHTML = losses
+document.getElementById('guessesL').innerHTML = 8
 
+//win/losses increments & check user answer against generated letter
 document.onkeyup = function printKey(event) {
   let pressedKey = event.key
 
   if (pressedKey === randomLetter) {
     alert("Congrats, you won!")
-    document.getElementById('win').innerHTML = wins++
+    document.getElementById('win').innerHTML = ++wins
     document.getElementById('guesses').innerHTML = ' '
-    guessesLeft = 9
-    generateLetter()
+    document.getElementById('guessesL').innerHTML = guessesLeft = 8
+   generateLetter()
 
-  } else if (currentGuess.length < 9) {
-    currentGuess.push(document.getElementById('guesses').innerHTML += " " + pressedKey + " ")
-    document.getElementById('guessesL').innerHTML = guessesLeft--
+  } else if (guessesLeft > 0) {
+   
+    (document.getElementById('guesses').innerHTML += " " + pressedKey + " ")
+    document.getElementById('guessesL').innerHTML = --guessesLeft
+
   } else {
     alert('You lost! Try again :)')
-    currentGuess = []
-    guessesLeft = 9
+    
+    guessesLeft = 8
     document.getElementById('guesses').innerHTML = ' '
-    document.getElementById('loss').innerHTML = losses++
+    document.getElementById('loss').innerHTML = ++losses
     generateLetter()
   }
 }
