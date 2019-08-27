@@ -24,6 +24,7 @@ window.onload = generateLetter()
   }else if (currentGuess.length < 9){
     currentGuess.push(document.getElementById('guesses').innerHTML += " " + pressedKey + " ")
   }else {
+    alert('You lost! Try again :)')
     currentGuess = []
     document.getElementById('guesses').innerHTML = ' '
     document.getElementById('loss').innerHTML = losses++
