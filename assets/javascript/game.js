@@ -1,27 +1,32 @@
 const char = 'abcdefghijklmnopqrstuvwxyz'
+let randomLetter  = ""
+let currentGuess = []
+let wins = 1
+let losses = 1
 
+//generate random letter 
 const generateLetter = () => {
-  let randomLetter = ""
     randomLetter = char.charAt(Math.floor(Math.random() * char.length))
-  return randomLetter
+  return console.log(randomLetter)
 }
+window.onload = generateLetter()
 
 
-document.onkeyup = function (event){
-  let pressedKey = event.key
-document.getElementById('pressed').innerHTML += " " + pressedKey + " "
-}
+  document.onkeyup = function printKey(event) {
+    let pressedKey = event.key
 
-
-
-// const checkGuess
-
-// const guessesLeft = () => {
-//   let guesses = 8
-// if //guessedLetter
-
-//  for (let i=0; i <= guesses; i++ ){
-
-//  }
-
-//   }
+  if(pressedKey === randomLetter){
+    alert("Congrats, you won!")
+    document.getElementById('win').innerHTML = wins++
+    document.getElementById('guesses').innerHTML = ' '
+    generateLetter()
+    
+  }else if (currentGuess.length < 9){
+    currentGuess.push(document.getElementById('guesses').innerHTML += " " + pressedKey + " ")
+  }else {
+    currentGuess = []
+    document.getElementById('guesses').innerHTML = ' '
+    document.getElementById('loss').innerHTML = losses++
+    generateLetter()
+  }
+  }
