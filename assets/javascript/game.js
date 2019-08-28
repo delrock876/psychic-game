@@ -1,4 +1,3 @@
-const char = 'abcdefghijklmnopqrstuvwxyz'
 let randomLetter = ""
 let wins = 0
 let losses = 0
@@ -11,7 +10,7 @@ document.getElementById('guessesL').innerHTML = 8
 
 //generate random letter 
 const generateLetter = () => {
-  randomLetter = char.charAt(Math.floor(Math.random() * char.length))
+  randomLetter = (Math.floor(Math.random() * 26)+ 97)
   return console.log(randomLetter)
 }
 
@@ -35,7 +34,7 @@ if (97<= event.keyCode && event.keyCode <=122){
   if (currentGuesses.includes(pressedKey)) {
   alert(`You've already guessed that. Try again :)`)
 
-  }else if (pressedKey === randomLetter ) {
+  }else if (event.keyCode === randomLetter ) {
     alert("Congrats, you won!")
     document.getElementById('win').innerHTML = ++wins
     reset()
