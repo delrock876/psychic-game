@@ -8,7 +8,7 @@ document.getElementById('win').innerHTML = wins
 document.getElementById('loss').innerHTML = losses
 document.getElementById('guessesL').innerHTML = 8
 
-//generate random letter 
+//generates random letter 
 const generateLetter = () => {
   randomLetter = (Math.floor(Math.random() * 26)+ 97)
   return console.log(randomLetter)
@@ -25,7 +25,7 @@ const reset = () => {
   generateLetter()
 }
 
-//win/losses increments & check user answer against generated letter
+//win/loss increments & check user answer against generated letter
 document.onkeypress = function printKey(event) {
   let pressedKey = event.key 
 
@@ -36,17 +36,20 @@ if (97<= event.keyCode && event.keyCode <=122){
 
   }else if (event.keyCode === randomLetter ) {
     alert("Congrats, you won!")
-    document.getElementById('win').innerHTML = ++wins
+    wins++
+    document.getElementById('win').innerHTML = wins
     reset()
 
   }else if (guessesLeft > 0) {
    currentGuesses.push(pressedKey)
+   guessesLeft--
    document.getElementById('guesses').innerHTML +=  pressedKey
-   document.getElementById('guessesL').innerHTML = --guessesLeft
+   document.getElementById('guessesL').innerHTML = guessesLeft
   
    }else {
     alert('You lost! Try again :)')
-    document.getElementById('loss').innerHTML = ++losses
+    losses++
+    document.getElementById('loss').innerHTML = losses
     reset()
   }
 }else {
